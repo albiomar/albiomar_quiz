@@ -10,4 +10,5 @@ router.get('/', function(req, res) {
 router.get('/ventanas/question', albiomar_quizController.question);
 router.get('/ventanas/answer', albiomar_quizController.answer);
 
+
 module.exports = router;

@@ -4,6 +4,7 @@ exports.question = function (req, res) {
 };
 // Get /ventanas/answer de index.js
 exports.answer = function (req, res) {
+	console.log(req.query.respuesta);
 	if (req.query.respuesta === 'Roma') {
 		res.render ('ventanas/answer', {respuesta: 'Correcto'});
 	} else {
