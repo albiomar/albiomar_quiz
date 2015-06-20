@@ -10,4 +10,7 @@ exports.answer = function (req, res) {
 	} else {
 		res.render ('ventanas/answer', {respuesta: 'Incorrecto'});
 	}
+};
+exports.author = function (req, res){
+	res.render ('ventanas/author')
 }
