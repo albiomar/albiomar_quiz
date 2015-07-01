@@ -7,6 +7,8 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz' });
 });
 
+router.param('quizId', albiomar_quizController.load);
+
 router.get('/ventanas/index',  albiomar_quizController.index);
 router.get('/ventanas/:quizId(\\d+)', albiomar_quizController.show);
 router.get('/ventanas/:quizId(\\d+)/answer', albiomar_quizController.answer);
