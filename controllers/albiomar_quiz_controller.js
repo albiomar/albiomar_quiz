@@ -10,7 +10,6 @@ exports.load = function (req, res, next, quizId) {
 			} else { next(new Error('No existe quizId=' + quizId));}
 		}
 	).catch(function(error) {next(error);});
-	
 };
 
 exports.index = function (req, res) {
@@ -25,6 +24,7 @@ exports.show = function (req, res) {
 		res.render ('ventanas/show', {quiz: req.quiz});
 };
 // Get /ventanas/answer de index.js
+
 exports.answer = function (req, res) {
 	var resultado = 'Incorrecto';
 	if (req.query.respuesta === req.quiz.respuesta) {
@@ -32,6 +32,20 @@ exports.answer = function (req, res) {
 	}
 	res.render ('ventanas/answer', {quiz: req.quiz, respuesta: resultado});
 };
+
 exports.author = function (req, res){
 	res.render ('ventanas/author')
+};
+
+
+exports.quizes = function (req, res) {
+	
+	if (typeof req.query.search === "undefined") {
+		res.render ('ventanas/quizes.ejs');
+	} else {
+		models.Quiz.findAll({where:['LOWER(pregunta) like LOWER(?)', '%' + req.query.search.replace(/ /g,"%") + '%'], order:'pregunta ASC'}).then(
+			function(quizes){
+				res.render ('ventanas/listaPregTexto.ejs', {quizes: quizes});
+			})
+	}
 }

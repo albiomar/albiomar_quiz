@@ -13,6 +13,8 @@ router.get('/ventanas/index',  albiomar_quizController.index);
 router.get('/ventanas/:quizId(\\d+)', albiomar_quizController.show);
 router.get('/ventanas/:quizId(\\d+)/answer', albiomar_quizController.answer);
 router.get('/ventanas/author', albiomar_quizController.author);
+router.get('/ventanas/quizes', albiomar_quizController.quizes);
+
 
 
 module.exports = router;
